@@ -15,7 +15,7 @@ def connect_string(x, ms):
 
 #寻找关联规则的函数
 def find_rule(d, support, confidence, ms = u'--'):
-  print(d)
+
   result = pd.DataFrame(index=['support', 'confidence']) #定义输出结果
   
   support_series = 1.0*d.sum()/len(d) #支持度序列
@@ -42,12 +42,12 @@ def find_rule(d, support, confidence, ms = u'--'):
       i = i.split(ms)
       for j in range(len(i)):
         column2.append(i[:j]+i[j+1:]+i[j:j+1])
-    
+
     cofidence_series = pd.Series(index=[ms.join(i) for i in column2]) #定义置信度序列
  
     for i in column2: #计算置信度序列
       cofidence_series[ms.join(i)] = support_series[ms.join(sorted(i))]/support_series[ms.join(i[:len(i)-1])]
-    
+
     for i in cofidence_series[cofidence_series > confidence].index: #置信度筛选
       result[i] = 0.0
       result[i]['confidence'] = cofidence_series[i]
