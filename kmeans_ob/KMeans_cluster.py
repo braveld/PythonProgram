@@ -11,8 +11,8 @@ k = 5                       #需要进行的聚类类别数
 data = pd.read_excel(inputfile).as_matrix() #读取数据
 print '-------------------------'
 #调用k-means算法，进行聚类分析
-kmodel = KMeans(n_clusters = k, n_jobs = 4) #n_jobs是并行数，一般等于CPU数较好
+kmodel = KMeans(n_clusters = k, n_jobs = 1) #n_jobs是并行数，一般等于CPU数较好,
 kmodel.fit(data) #训练模型
 
-kmodel.cluster_centers_ #查看聚类中心
-kmodel.labels_ #查看各样本对应的类别
+print kmodel.cluster_centers_ #查看聚类中心
+print kmodel.labels_ #查看各样本对应的类别
