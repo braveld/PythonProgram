@@ -38,20 +38,25 @@ if __name__ == '__main__':
 
 
     #无法直接对Dataframe的内容直接遍历，即不能使用Dataframe[i]的形式，我们直接通过获取Series的index，使用Series[index]的方式对Series进行遍历，获取每一个取值。
-    result = pd.DataFrame(index=['support', 'confidence'])  # 定义一个Dataframe
-    cofidence_series = pd.Series(index=['B---C', 'C---D'])  # 定义序列
-    for i in cofidence_series.index:  # 遍历序列的index
-        cofidence_series[i] = random.random()  # 随机生成一个0到1的随机数
-        result['A---B'] = 0.0  # 在Dataframe扩充一个新的列，列名为A---B
-        result['A---B']['support'] = 0.60  # 给该列每一行赋值，用index来对应
-        result['A---B']['confidence'] = 0.70
+    # result = pd.DataFrame(index=['support', 'confidence'])  # 定义一个Dataframe
+    # cofidence_series = pd.Series(index=['B---C', 'C---D'])  # 定义序列
+    # for i in cofidence_series.index:  # 遍历序列的index
+    #     cofidence_series[i] = random.random()  # 随机生成一个0到1的随机数
+    #     result['A---B'] = 0.0  # 在Dataframe扩充一个新的列，列名为A---B
+    #     result['A---B']['support'] = 0.60  # 给该列每一行赋值，用index来对应
+    #     result['A---B']['confidence'] = 0.70
+    #
+    #     result['A---C'] = 0.0
+    #     result['A---C']['support'] = 0.60
+    #     result['A---C']['confidence'] = 0.70
+    #
+    # for i in cofidence_series.index:  # 遍历序列的index
+    #     result[i] = 0.0  # 在Dataframe扩充一个新的列，列名为序列中的一个index
+    #     result[i]['support'] = cofidence_series[i]
+    #     result[i]['confidence'] = cofidence_series[i]
+    # print result
 
-        result['A---C'] = 0.0
-        result['A---C']['support'] = 0.60
-        result['A---C']['confidence'] = 0.70
-
-    for i in cofidence_series.index:  # 遍历序列的index
-        result[i] = 0.0  # 在Dataframe扩充一个新的列，列名为序列中的一个index
-        result[i]['support'] = cofidence_series[i]
-        result[i]['confidence'] = cofidence_series[i]
-    print result
+    #合并数据集
+    data = DataFrame({'key':['a','b','c'],'value1':[1,2,3]})
+    merge_data = DataFrame({'key':['b','a'],'value2':[1,2]})
+    print pd.merge(data,merge_data,on='key',how='left')
