@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 import pandas as pd
+import numpy as np
 from pandas import DataFrame,Series
 import random
 
@@ -66,6 +67,16 @@ if __name__ == '__main__':
     # print pd.merge(data,merge_data,on='key',how='left')
 
     #返回Dataframe
-    data = fanhui()
-    print data
+    # data = fanhui()
+    # print data
+
+    #Series由数字转化为字符串
+    data = [0,1,2,3]
+    arr = np.array(data)
+    arr = arr + 1
+    print arr
+    m = {1:'D1',2:'D2',3:'D3',4:'D4'}
+    s = pd.Series(arr)
+    s = s.map(lambda x : m[x])
+    print s
 
