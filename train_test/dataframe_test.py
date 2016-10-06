@@ -3,6 +3,10 @@ import pandas as pd
 from pandas import DataFrame,Series
 import random
 
+def fanhui():
+    data = DataFrame({'key': ['a', 'b', 'c'], 'value1': [1, 2, 3]})
+    return data
+
 if __name__ == '__main__':
     #Serices.prod(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs)
     # data = {'A':[0,1,1,1],'B':[1,0,1,0]}
@@ -57,6 +61,11 @@ if __name__ == '__main__':
     # print result
 
     #合并数据集
-    data = DataFrame({'key':['a','b','c'],'value1':[1,2,3]})
-    merge_data = DataFrame({'key':['b','a'],'value2':[1,2]})
-    print pd.merge(data,merge_data,on='key',how='left')
+    # data = DataFrame({'key':['a','b','c'],'value1':[1,2,3]})
+    # merge_data = DataFrame({'key':['b','a'],'value2':[1,2]})
+    # print pd.merge(data,merge_data,on='key',how='left')
+
+    #返回Dataframe
+    data = fanhui()
+    print data
+

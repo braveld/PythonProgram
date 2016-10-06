@@ -11,6 +11,10 @@ merge_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数
 
 merge_dir = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/容量变更相关数据/变更次数'
 
+relative_dir = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/关联指标'
+
+fee_dir = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/电量电费数据'
+
 def file_name(file_dir):
     list = []
     for root, dirs, files in os.walk(file_dir):
@@ -19,10 +23,8 @@ def file_name(file_dir):
     return list
         # return files #当前路径下所有非目录子文件
 
-def merge_data(oringin_total,merge_datafile):
+def merge_data(totaldata,merge_datafile):
     merge_data = pd.read_excel(merge_datafile, encoding='gbk')
-
-    totaldata = pd.read_excel(oringin_total, encoding='gbk')
 
     totaldata = pd.merge(totaldata, merge_data, on='CONS_NO', how='left')
     #
@@ -36,15 +38,17 @@ def merge_data(oringin_total,merge_datafile):
         del totaldata[u'   _x']
 
     print totaldata.columns
-    totaldata.to_excel(oringin_total)
+    return totaldata
 
 
 
 
 if __name__ == '__main__':
-    filenames = file_name(merge_dir)
+    filenames = file_name(fee_dir)
+    print filenames
+    totaldata = pd.read_excel(oringin_total, encoding='gbk')
     for filename in filenames:
-
-        merge_data(oringin_total,filename)
+        totaldata = merge_data(totaldata,filename)
+    totaldata.to_excel(oringin_total)
 
 
