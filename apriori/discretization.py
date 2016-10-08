@@ -26,10 +26,10 @@ if __name__ == '__main__': #判断是否主窗口运行，如果是将代码保�
     print(u'正在进行“%s”的聚类...' % keys[i])
     kmodel = KMeans(n_clusters = k, n_jobs = 4) #n_jobs是并行数，一般等于CPU数较好
     kmodel.fit(data[[keys[i]]].as_matrix()) #训练模型
-    
+
     r1 = pd.DataFrame(kmodel.cluster_centers_, columns = [typelabel[keys[i]]]) #聚类中心
     r2 = pd.Series(kmodel.labels_).value_counts() #分类统计
-    print(kmodel.labels_)
+
     r2 = pd.DataFrame(r2, columns = [typelabel[keys[i]]+'n']) #转为DataFrame，记录各个类别的数目
     r = pd.concat([r1, r2], axis = 1).sort(typelabel[keys[i]]) #匹配聚类中心和类别数目
     r.index = [1, 2, 3, 4]

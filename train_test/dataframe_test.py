@@ -4,9 +4,9 @@ import numpy as np
 from pandas import DataFrame,Series
 import random
 
-def fanhui():
-    data = DataFrame({'key': ['a', 'b', 'c'], 'value1': [1, 2, 3]})
-    return data
+# def fanhui():
+#     data = DataFrame({'key': ['a', 'b', 'c'], 'value1': [1, 2, 3]})
+#     return data
 
 
 
@@ -73,32 +73,38 @@ if __name__ == '__main__':
     # print data
 
     #Series由数字转化为字符串
-    data = [0,1,2,3]
-    data2 = [u'是',u'否',0]
+    # data = [0,1,2,3]
+    # data2 = [u'是',u'否',0]
+    #
+    # arr = np.array(data)
+    # arr = arr + 1
+    # print arr
+    # m = {1:'D1',2:'D2',3:'D3',4:'D4'}
+    # n = {u'是':u'是三方',u'否':u'非三方','0':u'没有记录'}
+    # p = {u'是': u'是', u'否': u'否', '0': u'没有记录'}
+    #
+    # s = pd.Series(arr)
+    # zifu = s.map(lambda x: str(x))
+    # print zifu
+    # s = s.map(lambda x : m[x])
+    # print s
+    #
+    # r = pd.Series(np.array(data2))
+    # # r = r.map(lambda x : unicode(x))
+    # r = r.map(lambda x : n[x])
+    #
+    # print r
+    #
+    # t = pd.Series(np.array(data2))
+    # t = t.map(lambda x: p[x])
+    # print t
+    #
+    # q = pd.Series(np.array(data2))
+    # q[q=='0'] = '没有记录'
+    # print q
 
-    arr = np.array(data)
-    arr = arr + 1
-    print arr
-    m = {1:'D1',2:'D2',3:'D3',4:'D4'}
-    n = {u'是':u'是三方',u'否':u'非三方','0':u'没有记录'}
-    p = {u'是': u'是', u'否': u'否', '0': u'没有记录'}
-
-    s = pd.Series(arr)
-    zifu = s.map(lambda x: str(x))
-    print zifu
-    s = s.map(lambda x : m[x])
-    print s
-
-    r = pd.Series(np.array(data2))
-    # r = r.map(lambda x : unicode(x))
-    r = r.map(lambda x : n[x])
-
-    print r
-
-    t = pd.Series(np.array(data2))
-    t = t.map(lambda x: p[x])
-    print t
-
-    q = pd.Series(np.array(data2))
-    q[q=='0'] = '没有记录'
-    print q
+    data = {'A':[1,2,3],'B':[1,2,5]}
+    data1 = {'A':[1,2,3],'B':[1,2,5]}
+    data = pd.DataFrame(data)
+    data1 = pd.DataFrame(data1)
+    print data.append(data1)

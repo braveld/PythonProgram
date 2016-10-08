@@ -34,6 +34,6 @@ if __name__ == '__main__':
     discretization_data[u'是否三方协议'] = oringin_data[u'是否三方协议'].map(lambda x : sanfang[x])
     discretization_data[u'生产班次'] = oringin_data[u'生产班次']
 
-    print discretization_data.head()
+    print discretization_data.columns
 
     discretization_data.to_excel(new_discretization)

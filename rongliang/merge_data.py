@@ -5,9 +5,7 @@ import os
 
 new_total = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/用户基本信息表.xls'
 
-oringin_total = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/用户基本信息.xls'
-
-merge_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/容量变更相关数据/变更次数'
+oringin_total = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/用户基本信息表.xls'
 
 merge_dir = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/容量变更相关数据/变更次数'
 
@@ -44,11 +42,10 @@ def merge_data(totaldata,merge_datafile):
 
 
 if __name__ == '__main__':
-    filenames = file_name(fee_dir)
-    print filenames
+    filenames = file_name(merge_dir)
     totaldata = pd.read_excel(oringin_total, encoding='gbk')
     for filename in filenames:
         totaldata = merge_data(totaldata,filename)
-    totaldata.to_excel(oringin_total)
+    # totaldata.to_excel(oringin_total)
 
 
