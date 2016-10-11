@@ -8,6 +8,7 @@ import time #导入时间库用来计算用时
 # data = pd.read_csv(inputfile, header=None, encoding='gbk')
 
 inputfile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/新离散化表.xls'
+outputfile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/新记录离散化表.xls'
 data = pd.read_excel(inputfile, header=None, encoding='gbk')
 
 # 自定义连接函数，用于实现L_{k-1}到C_k的连接
@@ -63,29 +64,27 @@ def find_rule(d, support, confidence, ms=u'--'):
     result = result.T.sort(['confidence', 'support'], ascending=False)  # 结果整理，输出
     print(u'\n结果为：')
     print(result)
-
+    result.to_excel(outputfile)
     return result
 
 if __name__ == '__main__':
     start = time.clock()  # 计时开始
     print(u'\n转换原始数据至0-1矩阵...')
     ct = lambda x: pd.Series(1, index=x[pd.notnull(x)])  # 转换0-1矩阵的过渡函数,
-    print(data.head())
-    # print(data.as_matrix())
+
     b = map(ct, data.as_matrix())  # 用map方式执行
-    print(type(b))
-    # data = pd.DataFrame(b).fillna(0)  # 实现矩阵转换，空值用0填充
-    # print(u'转化完成')
-    # end = time.clock()  # 计时结束
-    # print(u'\n转换完毕，用时：%0.2f秒' % (end - start))
-    # del b  # 删除中间变量b，节省内存
-    #
-    # support = 0.06  # 最小支持度
-    # confidence = 0.75  # 最小置信度
-    # ms = '---'  # 连接符，默认'--'，用来区分不同元素，如A--B。需要保证原始表格中不含有该字符
-    #
-    # start = time.clock()  # 计时开始
-    # print(u'\n开始搜索关联规则...')
-    # find_rule(data, support, confidence, ms)
-    # end = time.clock()  # 计时结束
-    # print(u'\n搜索完成，用时：%0.2f秒' % (end - start))
+    # print(type(b))
+    data = pd.DataFrame(b).fillna(0)  # 实现矩阵转换，空值用0填充
+    end = time.clock()  # 计时结束
+    print(u'\n转换完毕，用时：%0.2f秒' % (end - start))
+    del b  # 删除中间变量b，节省内存
+
+    support = 0.90  # 最小支持度
+    confidence = 0.90  # 最小置信度
+    ms = '---'  # 连接符，默认'--'，用来区分不同元素，如A--B。需要保证原始表格中不含有该字符
+
+    start = time.clock()  # 计时开始
+    print(u'\n开始搜索关联规则...')
+    find_rule(data, support, confidence, ms)
+    end = time.clock()  # 计时结束
+    print(u'\n搜索完成，用时：%0.2f秒' % (end - start))

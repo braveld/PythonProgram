@@ -26,7 +26,7 @@ def find_rule(d, support, confidence, ms = u'--'):
     k = k+1
     print(u'\n正在进行第%s次搜索...' %k)
     column = connect_string(column, ms)
-    print(column)
+
     print(u'数目：%s...' %len(column))
     sf = lambda i: d[i].prod(axis=1, numeric_only = True) #新一批支持度的计算函数
     #创建连接数据，这一步耗时、耗内存最严重。当数据集较大时，可以考虑并行运算优化。

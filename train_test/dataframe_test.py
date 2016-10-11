@@ -7,9 +7,11 @@ import random
 # def fanhui():
 #     data = DataFrame({'key': ['a', 'b', 'c'], 'value1': [1, 2, 3]})
 #     return data
+origin_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/明细数据/所有的容量变更记录明细数据.xls'
 
+new_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/明细数据/去除0所有的容量变更记录明细数据.xls'
 
-
+origin_data = pd.read_excel(origin_datafile,encoding='gbk')
 if __name__ == '__main__':
     #Serices.prod(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs)
     # data = {'A':[0,1,1,1],'B':[1,0,1,0]}
@@ -103,8 +105,16 @@ if __name__ == '__main__':
     # q[q=='0'] = '没有记录'
     # print q
 
-    data = {'A':[1,2,3],'B':[1,2,5]}
-    data1 = {'A':[1,2,3],'B':[1,2,5]}
-    data = pd.DataFrame(data)
-    data1 = pd.DataFrame(data1)
-    print data.append(data1)
+    # data = {'A':[1,2,3],'B':[1,2,5]}
+    # data1 = {'A':[1,2,3],'B':[1,2,5]}
+    # data = pd.DataFrame(data)
+    # data1 = pd.DataFrame(data1)
+    # print data.append(data1)
+
+    #isin()函数取反
+    # origin_data[-origin_data[u'申请执行起日期'].isin([0])].to_excel(new_datafile)
+
+    df = pd.DataFrame([[1, 2], [3, 4]], columns=list('AB'))
+    df2 = pd.DataFrame([[5, 6], [7, 8]], columns=list('AB'))
+    df.append(df2)
+    print df

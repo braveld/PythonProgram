@@ -9,16 +9,18 @@ An  240  356.000000  281.000000   53.000000
 from __future__ import print_function
 import pandas as pd
 from sklearn.cluster import KMeans #导入K均值聚类算法
-
+new_discretization = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/新去除0离散化表.xls'
 datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/处理后的用户基本信息表.xls' #待聚类的数据文件
 processedfile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/关联性指标数据/离散化表.xls' #数据处理后文件
 typelabel ={u'合同容量':'A', u'运行容量':'B', u'检查周期':'C', u'立户时长':'D', u'送电时长':'E', u'计量点个数':'F', u'受电点个数':'G', u'电源点个数':'H', u'本季度暂停次数':'I', u'合同容量变更次数':'J', u'本季度减容次数':'K',
             u'全量减容恢复次数':'L', u'本季度暂停恢复次数':'M',u'全量增容次数':'N',u'全量暂停恢复次数':'O',u'全量暂停次数':'P',u'本季度增容次数':'Q',u'全量减容次数':'R',u'运行容量变更次数':'S',u'本季度减容恢复次数':'T',
             u'与电网交互情况': 'U',u'停电次数':'V',u'平均安全隐患间隔':'W',u'2016年1月至2016年6月总电量':'X',u'2015总电量':'Y',u'2014总电量':'Z'}
+
+
 k = 3 #需要进行的聚类类别数
 
 #读取数据并进行聚类分析
-data = pd.read_excel(datafile) #读取数据
+data = pd.read_excel(new_discretization) #读取数据
 keys = list(typelabel.keys())
 final_data = pd.DataFrame()
 
