@@ -12,14 +12,14 @@ new_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数�
 total_data = pd.read_csv(total,encoding='gbk')
 
 if __name__ == '__main__':
-    # date1 = parse('01/04/2014 15:44:16',dayfirst = True)
-    # date2 = parse('20140401')
-    # print date1
-    # print date2
-    # print date1.date().__eq__(date2)
-    # print date2.strftime('%Y%m%d')
-    # print date1.date().strftime('%Y%m%d')
-    # print date1.date().strftime('%Y%m')
+    date1 = parse('01/04/2014 15:44:16',dayfirst = True)
+    date2 = parse('20140401')
+    print date1
+    print date2
+    print date1.date().__eq__(date2)
+    print date2.strftime('%Y%m%d')
+    print date1.date().strftime('%Y%m%d')
+    print date1.date().strftime('%Y%m')
 
     #
     origin_data = pd.read_excel(new_datafile, encoding='gbk')
