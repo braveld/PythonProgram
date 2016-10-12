@@ -7,9 +7,7 @@ import random
 # def fanhui():
 #     data = DataFrame({'key': ['a', 'b', 'c'], 'value1': [1, 2, 3]})
 #     return data
-origin_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/明细数据/所有的容量变更记录明细数据.xls'
-
-new_datafile = '/home/bigdata/Downloads/data/luodi/容量变更预测指标数据/明细数据/去除0所有的容量变更记录明细数据.xls'
+origin_datafile = u'F:/data/转化后的500户容量变更记录明细数据.xls'
 
 origin_data = pd.read_excel(origin_datafile,encoding='gbk')
 if __name__ == '__main__':
@@ -114,7 +112,39 @@ if __name__ == '__main__':
     #isin()函数取反
     # origin_data[-origin_data[u'申请执行起日期'].isin([0])].to_excel(new_datafile)
 
-    df = pd.DataFrame([[1, 2], [3, 4]], columns=list('AB'))
-    df2 = pd.DataFrame([[5, 6], [7, 8]], columns=list('AB'))
-    df.append(df2)
-    print df
+    # df = pd.DataFrame([[1, 2], [3, 4]], columns=list('AB'))
+    # df2 = pd.DataFrame([[5, 6], [7, 8]], columns=list('AB'))
+    # df.append(df2)
+    # print df
+
+    #测试dataframe转化为matrix后的切片访问
+    # df = pd.DataFrame([[1, 2], [3, 4]], columns=list('AB'))
+    # df = df.as_matrix()
+    # print df[0][1]
+
+    #测试列表的连接
+    # list = []
+    # list.append(124212343)
+    # list.append(12234)
+    #
+    # strlist = []
+    # strlist.append('sdf')
+    # strlist.append('dfg')
+    # print strlist
+
+    #dataframe帅选数据，当所有的行都不符合
+    # d = {'date':[20140401,20150401,20160401],'rongliang':[1,2,3]}
+    # data = pd.DataFrame(d)
+    # print data[data['date'] > 20160401].empty
+
+    #统计dataframe的行数
+    # d = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    # data = pd.DataFrame(d)
+    # len =  len(data['date'])
+    # print data['date'].tolist()[len-1]
+
+    # 统计dataframe的行数
+    d = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    data = pd.DataFrame(d)
+    for i in data.as_matrix():
+        print i[1]
