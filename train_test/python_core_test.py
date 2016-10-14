@@ -13,6 +13,12 @@ if __name__ == '__main__':
     # print str.join(test)
 
     #找出列表的差集
+    # a = [2, 5]
+    # b = [2, 5, 8]
+    # print list(set(b).difference(set(a)))  # b中有而a中没有的
+
+    #列表的增加,不可行
     a = [2, 5]
-    b = [2, 5, 8]
-    print list(set(b).difference(set(a)))  # b中有而a中没有的
+    b = []
+    b = b.append(a)
+    print b

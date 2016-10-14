@@ -7,9 +7,9 @@ import random
 # def fanhui():
 #     data = DataFrame({'key': ['a', 'b', 'c'], 'value1': [1, 2, 3]})
 #     return data
-origin_datafile = u'F:/data/转化后的500户容量变更记录明细数据.xls'
+# origin_datafile = u'F:/data/转化后的500户容量变更记录明细数据.xls'
 
-origin_data = pd.read_excel(origin_datafile,encoding='gbk')
+# origin_data = pd.read_excel(origin_datafile,encoding='gbk')
 if __name__ == '__main__':
     #Serices.prod(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs)
     # data = {'A':[0,1,1,1],'B':[1,0,1,0]}
@@ -144,7 +144,19 @@ if __name__ == '__main__':
     # print data['date'].tolist()[len-1]
 
     # 统计dataframe的行数
-    d = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
-    data = pd.DataFrame(d)
-    for i in data.as_matrix():
-        print i[1]
+    # d = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    # data = pd.DataFrame(d)
+    # for i in data.as_matrix():
+    #     print i[1]
+
+    #Dataframe.size的使用
+    # d = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    # data = pd.DataFrame(d)
+    # print data['date'].size
+
+    #Dataframe的叠加
+    d1 = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    d2 = {'date': [20140402, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    d1 = pd.DataFrame(d1)
+    d2 = pd.DataFrame(d2)
+    print d1.intersection(d2)

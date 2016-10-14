@@ -13,7 +13,7 @@ if __name__ == '__main__':
     total_data = total_data.dropna()
 
     total_data[u'申请执行起日期'] = total_data[u'申请执行起日期'].map(lambda x: parse(str(x)).date().strftime('%Y%m%d'))
-    total_data[u'申请执行月'] = total_data[u'申请执行起日期'].map(lambda x: parse(str(x)).date().strftime('%Y%m01'))
+    total_data[u'申请执行月'] = total_data[u'申请执行起日期'].map(lambda x: parse(str(x)).date().strftime('%Y%m'))
 
     total_data.to_excel(after_change)
 

@@ -28,4 +28,7 @@ if __name__ == '__main__':
     #
     # print (date2 - date1).days
 
-    final_data = pd.read_csv(final)
+    # final_data = pd.read_csv(final)
+    data = {'date':[20160101,20160201],'userno':[1,2]}
+    data = pd.DataFrame(data)
+    data['date'] = pd.to_datetime(data['date'],format='%Y%m%d')
