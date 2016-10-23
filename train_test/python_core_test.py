@@ -18,7 +18,12 @@ if __name__ == '__main__':
     # print list(set(b).difference(set(a)))  # b中有而a中没有的
 
     #列表的增加,不可行
-    a = [2, 5]
-    b = []
-    b = b.append(a)
-    print b
+    # a = [2, 5]
+    # b = []
+    # b = b.append(a)
+    # print b
+
+    #汉字转为数字
+    str = u'你好'
+    print int(str)
+

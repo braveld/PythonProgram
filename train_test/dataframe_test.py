@@ -154,9 +154,35 @@ if __name__ == '__main__':
     # data = pd.DataFrame(d)
     # print data['date'].size
 
-    #Dataframe的叠加
-    d1 = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
-    d2 = {'date': [20140402, 20150401, 20160401], 'rongliang': [1, 2, 3]}
-    d1 = pd.DataFrame(d1)
-    d2 = pd.DataFrame(d2)
-    print d1.intersection(d2)
+    # #矩阵切片
+    # d1 = {'date': [20140401, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    # d2 = {'date': [20140402, 20150401, 20160401], 'rongliang': [1, 2, 3]}
+    # d3 = [[1,2,3],[2,3,4]]
+    # d3 = np.array(d3) #多维数组的切片
+    # print d3[:,1]   #列表不能进行切片
+    #
+    # #字典添加
+    # d1 = {}
+    # d1['a'] = [1,2,3]
+    # print d1
+
+    #矩阵的转置
+    # data = {'date':[1,2,3],'no':[4,5,6]}
+    # data = pd.DataFrame(data)
+    # data = data['date'].as_matrix()
+    # print data.T
+
+    #探索Series的and操作是否可行,结果不可行
+    # data = {'T':[1,2],'F':[False,False]}
+    # data = pd.DataFrame(data)
+    # print type(data['T'] > 0)
+
+    #字符串粘贴
+    # num = 201407
+    # num = str(num) + '01'
+    # print num
+
+    #dataframe求和
+    data = {'date':[1,2,3],'no':[4,5,6]}
+    data = pd.DataFrame(data)
+    print type(data.sum())

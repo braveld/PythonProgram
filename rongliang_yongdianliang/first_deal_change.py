@@ -9,9 +9,6 @@ first_change_datafile = u'F:/data/第一次处理后的容量变更记录明细�
 rl_count_datafile = u'F:/data/容量变更次数.xls'
 new_yongdianlaing_datafile = u'F:/data/新的每月用电量.csv'
 
-dates = [201407, 201408, 201409, 201410, 201411, 201412, 201501, 201502, 201503, 201504, 201505, 201506, 201507, 201508,
-         201509, 201510, 201511, 201512,
-         201601, 201602, 201603, 201604, 201605, 201606]
 origin_data = pd.read_csv(origin_datafile,encoding='gbk')
 del origin_data[u'总电费']
 origin_data = origin_data[origin_data[u'总电量'] != 0]
@@ -21,12 +18,13 @@ if __name__ == '__main__':
     all_rongliang_data = all_rongliang_data.dropna()#去除空值
 
     #进行日期转换
-    all_rongliang_data[u'申请执行起日期'] = all_rongliang_data[u'受理申请时间'].map(lambda x: parse(str(x)).date().strftime('%Y%m%d'))
-    all_rongliang_data[u'申请执行月'] = all_rongliang_data[u'受理申请时间'].map(lambda x: parse(str(x)).date().strftime('%Y%m'))
-    all_rongliang_data = all_rongliang_data[all_rongliang_data[u'申请执行月'] > 201407]#选择2014年7月之后的数据
+    all_rongliang_data[u'申请执行起日期'] = all_rongliang_data[u'受理申请时间'].map(lambda x: int(parse(str(x)).date().strftime('%Y%m%d')))
+    all_rongliang_data[u'申请执行月'] = all_rongliang_data[u'受理申请时间'].map(lambda x: int(parse(str(x)).date().strftime('%Y%m')))
     deal = {u'高压增容':1,u'减容':2,u'减容恢复':3,u'暂停':4,u'暂停恢复':5}
     all_rongliang_data[u'申请业务类型'] = all_rongliang_data[u'申请业务类型'].map(lambda x : deal[x])
     del all_rongliang_data[u'受理申请时间']
+
+    all_rongliang_data = all_rongliang_data[all_rongliang_data[u'申请执行月'] >= 201407]  # 选择2014年7月之后的数据
 
 
     grouped = origin_data.groupby('CONS_NO')
@@ -58,5 +56,6 @@ if __name__ == '__main__':
     change_data = change_data.fillna(0)
     # change_data = change_data[change_data['CONS_NO'].isin(users)]
     change_data.to_csv(new_yongdianlaing_datafile,encoding='gbk')
+    all_rongliang_data = all_rongliang_data[all_rongliang_data['CONS_NO'].isin(users)]
     all_rongliang_data.to_excel(first_change_datafile)
 
