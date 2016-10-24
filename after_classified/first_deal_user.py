@@ -10,7 +10,7 @@ user_all = u'F:/data/用户全部基本信息.xls'
 get_500 = u'F:/data/转化后的500户容量变更记录明细数据.xls'
 all_rongliang = u'F:/data/转化后的容量变更记录明细数据.xls'
 final = u'F:/data/样本集.csv'
-last = u'F:/data/新的最终样本集.csv'
+last = u'F:/data/指标增加最终样本集.csv'
 duofenlei = u'F:/data/多分类样本集.csv'
 quchu = u'F:/data/去除第一次样本集.csv'
 zengrong = u'F:/data/1.csv'
@@ -59,6 +59,10 @@ if __name__ == '__main__':
     # yangben.to_csv(quchu,encoding='gbk')
 
     # yangben = pd.read_csv(last, encoding='gbk')
+    # yangben = yangben[yangben[u'申请业务类型'] < 2]
+    # yangben.to_csv(zengrong,encoding='gbk')
+
+    # yangben = pd.read_csv(last, encoding='gbk')
     # yangben = yangben[yangben[u'申请业务类型'] < 3]
     # yangben = yangben[yangben[u'申请业务类型'] != 1]
     # yangben.to_csv(jianrong,encoding='gbk')
@@ -76,18 +80,18 @@ if __name__ == '__main__':
     # yangben = yangben[yangben[u'申请业务类型'] != 3]
     # yangben.to_csv(zanting, encoding='gbk')
 
-    # yangben = pd.read_csv(last, encoding='gbk')
-    # # yangben = yangben[yangben[u'申请业务类型'] < 5]
-    # yangben = yangben[yangben[u'申请业务类型'] != 1]
-    # yangben = yangben[yangben[u'申请业务类型'] != 2]
-    # yangben = yangben[yangben[u'申请业务类型'] != 3]
-    # yangben = yangben[yangben[u'申请业务类型'] != 4]
-    # yangben.to_csv(zantinghuifu, encoding='gbk')
-
     yangben = pd.read_csv(last, encoding='gbk')
-    yangben = yangben[yangben[u'是否容量变更'] == 0]
-    yangben[u'受理申请时间'] =yangben[u'受理申请时间'].map(lambda x : change(x))
-    yangben.to_csv(guodu, encoding='gbk')
+    # yangben = yangben[yangben[u'申请业务类型'] < 5]
+    yangben = yangben[yangben[u'申请业务类型'] != 1]
+    yangben = yangben[yangben[u'申请业务类型'] != 2]
+    yangben = yangben[yangben[u'申请业务类型'] != 3]
+    yangben = yangben[yangben[u'申请业务类型'] != 4]
+    yangben.to_csv(zantinghuifu, encoding='gbk')
+
+    # yangben = pd.read_csv(last, encoding='gbk')
+    # yangben = yangben[yangben[u'是否容量变更'] == 0]
+    # yangben[u'受理申请时间'] =yangben[u'受理申请时间'].map(lambda x : change(x))
+    # yangben.to_csv(guodu, encoding='gbk')
 
     # yangben = pd.read_csv(last, encoding='gbk')
     # list = [u'前六个月',u'前五个月',u'前四个月',u'前三个月',u'前二个月',u'前一个月']

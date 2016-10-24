@@ -183,6 +183,13 @@ if __name__ == '__main__':
     # print num
 
     #dataframe求和
-    data = {'date':[1,2,3],'no':[4,5,6]}
+    # data = {'date':[1,2,3],'no':[4,5,6]}
+    # data = pd.DataFrame(data)
+    # print type(data.sum())
+
+    #求最大值的行
+    data = {'date':[1,2,3],'no':[6,5,4]}
     data = pd.DataFrame(data)
-    print type(data.sum())
+
+    # print data.index[data['date'] == data['date'].max()]
+    print type(data.idxmax())
