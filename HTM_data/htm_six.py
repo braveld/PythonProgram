@@ -25,6 +25,7 @@ jia_1000 = pd.read_csv(jia_1000,encoding='gbk')
 jia_2000 = pd.read_csv(jia_2000,encoding='gbk')
 hangye = pd.read_excel(hangye)
 hangye = hangye[[u'CONS_NO',u'一级分类编号',u'二级分类编号']]
+hangye = hangye.dropna()
 # print hangye[u'一级分类编号'].value_counts()
 # print hangye[u'二级分类编号'].value_counts()
 fenlei_1 = hangye[u'一级分类编号'].tolist()
@@ -60,11 +61,11 @@ deal_3 = {}
 for j in range(len(fenlei_1)):
     deal_1[fenlei_1[j]] = j + 1
 
-for j in range(len(fenlei_2)):
-    deal_2[fenlei_2[j]] = j + 1
+for k in range(len(fenlei_2)):
+    deal_2[fenlei_2[k]] = k + 1
 
-for j in range(len(fenlei_3)):
-    deal_3[fenlei_3[j]] = j + 1
+for l in range(len(fenlei_3)):
+    deal_3[fenlei_3[l]] = l + 1
 
 hangye[u'一级分类编号'] = hangye[u'一级分类编号'].map(lambda x : deal_1[x])
 hangye[u'二级分类编号'] = hangye[u'二级分类编号'].map(lambda x : deal_2[x])

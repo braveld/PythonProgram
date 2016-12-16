@@ -30,7 +30,7 @@ jidi = yongdian[yongdian[u'总电量'] < 20110]
 
 if __name__ == '__main__':
 
-    # 用电量低
+    # 用电量极低
     # kmodel = KMeans(n_clusters = 10, n_jobs = 4) #n_jobs是并行数，一般等于CPU数较好,
     # kmodel.fit(jidi) #训练模型
     # joblib.dump(kmodel , u'f:/用电量极低划分.pkl')

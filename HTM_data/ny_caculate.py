@@ -73,5 +73,5 @@ def ny_duiying(a):
              201509, 201510, 201511, 201512,
              201601, 201602, 201603, 201604, 201605, 201606]
     for j in range(30):
-        if dates[j] == a:
+        if dates[j] == int(a):
             return j
